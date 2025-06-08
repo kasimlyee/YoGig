@@ -77,9 +77,16 @@ export const TestimonialsSection = () => {
         </Typography>
       </Fade>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+      <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="w-full">
+          <Grid
+            item
+            key={index}
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Slide
               in={loaded}
               direction="up"
@@ -89,6 +96,8 @@ export const TestimonialsSection = () => {
               <Card
                 sx={{
                   height: "100%",
+                  width: "100%",
+                  maxWidth: 400,
                   borderRadius: "16px",
                   boxShadow: theme.shadows[4],
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
@@ -166,9 +175,9 @@ export const TestimonialsSection = () => {
                 </CardContent>
               </Card>
             </Slide>
-          </div>
+          </Grid>
         ))}
-      </div>
+      </Grid>
 
       <Fade in={loaded} timeout={1000}>
         <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>

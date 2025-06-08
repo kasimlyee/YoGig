@@ -7,6 +7,8 @@ import {
   Chip,
   Button,
   Avatar,
+  useTheme,
+  alpha,
 } from "@mui/material";
 import { LocationOn, AttachMoney, Schedule } from "@mui/icons-material";
 
@@ -18,6 +20,7 @@ interface JobCardProps {
   postedTime: string;
   tags: string[];
   onApply: () => void;
+  clientName?: string;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
@@ -28,31 +31,47 @@ const JobCard: React.FC<JobCardProps> = ({
   postedTime,
   tags,
   onApply,
+  clientName = "Client",
 }) => {
+  const theme = useTheme();
+
   return (
     <Card
       sx={{
         borderRadius: 2,
-        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+        boxShadow: theme.shadows[1],
         mb: 2,
+        transition: theme.transitions.create("box-shadow"),
         "&:hover": {
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          boxShadow: theme.shadows[4],
         },
       }}
     >
       <CardContent>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
-          <Typography variant="h6" fontWeight="bold">
+        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+          <Typography
+            variant="h6"
+            fontWeight={600}
+            sx={{ fontFamily: '"Poppins", sans-serif' }}
+          >
             {title}
           </Typography>
           <Chip
             label={budget}
             icon={<AttachMoney fontSize="small" />}
-            sx={{ bgcolor: "#EEF2FF", color: "yogig.primary" }}
+            sx={{
+              bgcolor: alpha(theme.palette.primary.main, 0.1),
+              color: "primary.main",
+              fontWeight: 500,
+            }}
           />
         </Box>
 
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ mb: 2, lineHeight: 1.6 }}
+        >
           {description}
         </Typography>
 
@@ -62,22 +81,27 @@ const JobCard: React.FC<JobCardProps> = ({
             icon={<LocationOn fontSize="small" />}
             size="small"
             variant="outlined"
+            sx={{ color: "text.secondary" }}
           />
           <Chip
             label={postedTime}
             icon={<Schedule fontSize="small" />}
             size="small"
             variant="outlined"
+            sx={{ color: "text.secondary" }}
           />
         </Box>
 
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 2 }}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 3 }}>
           {tags.map((tag) => (
             <Chip
               key={tag}
               label={tag}
               size="small"
-              sx={{ bgcolor: "#F3F4F6", color: "yogig.dark" }}
+              sx={{
+                bgcolor: "action.hover",
+                color: "text.secondary",
+              }}
             />
           ))}
         </Box>
@@ -90,18 +114,36 @@ const JobCard: React.FC<JobCardProps> = ({
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>C</Avatar>
-            <Typography variant="body2">Client Name</Typography>
+            <Avatar
+              sx={{
+                width: 32,
+                height: 32,
+                mr: 1,
+                bgcolor: "primary.main",
+                color: "primary.contrastText",
+                fontSize: "0.875rem",
+              }}
+            >
+              {clientName.charAt(0)}
+            </Avatar>
+            <Typography variant="body2" color="text.secondary">
+              {clientName}
+            </Typography>
           </Box>
           <Button
             variant="contained"
             onClick={onApply}
             sx={{
-              bgcolor: "yogig.primary",
-              "&:hover": { bgcolor: "yogig.primary" },
+              bgcolor: "primary.main",
+              "&:hover": {
+                bgcolor: "primary.dark",
+              },
+              textTransform: "none",
+              fontWeight: 600,
+              px: 3,
             }}
           >
-            Apply
+            Apply Now
           </Button>
         </Box>
       </CardContent>

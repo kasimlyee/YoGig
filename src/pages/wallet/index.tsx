@@ -4,7 +4,7 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
+  useTheme,
   Paper,
   Tabs,
   Tab,
@@ -28,6 +28,7 @@ import MobileNav from "@/components/layout/MobileNav";
 import MobileMoneyCard from "@/components/shared/MobileMoneyCard";
 
 const Wallet: React.FC = () => {
+  const theme = useTheme();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [tabValue, setTabValue] = useState(0);
@@ -76,10 +77,14 @@ const Wallet: React.FC = () => {
         <meta name="description" content="Manage your YoGig wallet" />
       </Head>
 
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", minHeight: "100vh" }}>
         <Sidebar
           isCollapsed={isSidebarCollapsed}
           toggleCollapse={toggleSidebar}
+          user={{
+            name: "Kasim Lyee",
+            role: "Creator",
+          }}
         />
         <Box
           component="main"
@@ -87,11 +92,30 @@ const Wallet: React.FC = () => {
             flexGrow: 1,
             p: 3,
             width: {
-              md: `calc(100% - ${isSidebarCollapsed ? "80px" : "250px"})`,
+              md: `calc(100% - ${
+                isSidebarCollapsed ? theme.spacing(9) : theme.spacing(30)
+              })`,
             },
+            ml: {
+              md: isSidebarCollapsed ? theme.spacing(9) : theme.spacing(30),
+            },
+            transition: theme.transitions.create(["width", "margin"], {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.leavingScreen,
+            }),
+            backgroundColor: "background.default",
           }}
         >
-          <Topbar toggleMobileSidebar={toggleMobileSidebar} />
+          <Topbar
+            toggleMobileSidebar={toggleMobileSidebar}
+            toggleTheme={() => {}}
+            darkMode={false}
+            user={{
+              name: "Kasim Lyee",
+              email: "kasiimlyee@gmail.com",
+              role: "Creator",
+            }}
+          />
           <Container maxWidth="xl" sx={{ mt: 8, mb: 10 }}>
             <Box sx={{ mb: 4 }}>
               <Typography variant="h4" fontWeight="bold" gutterBottom>

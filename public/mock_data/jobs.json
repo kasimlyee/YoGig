@@ -1,0 +1,454 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Website Development",
+      "description": "Looking for a skilled web developer to build a responsive e-commerce website with React and Node.js.",
+      "budget": "UGX 2,500,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["React", "Node.js", "MongoDB", "E-commerce"]
+    },
+    {
+      "id": 2,
+      "title": "Mobile App Design",
+      "description": "Need a UI/UX designer to create wireframes and prototypes for a fitness mobile application.",
+      "budget": "UGX 1,800,000",
+      "location": "Kampala",
+      "postedTime": "1 week ago",
+      "tags": ["UI/UX", "Figma", "Mobile Design"]
+    },
+    {
+      "id": 3,
+      "title": "Content Writing",
+      "description": "Looking for a content writer to create blog posts about technology trends in Africa.",
+      "budget": "UGX 800,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["Content Writing", "Blogging", "Technology"]
+    },
+    {
+      "id": 4,
+      "title": "Data Analyst",
+      "description": "Seeking a data analyst to interpret complex datasets and generate actionable insights for a retail business.",
+      "budget": "UGX 2,000,000",
+      "location": "Kampala",
+      "postedTime": "4 days ago",
+      "tags": ["Data Analysis", "Python", "SQL", "Retail"]
+    },
+    {
+      "id": 5,
+      "title": "Graphic Designer",
+      "description": "Need a creative graphic designer to develop branding materials for a startup.",
+      "budget": "UGX 1,200,000",
+      "location": "Remote",
+      "postedTime": "5 days ago",
+      "tags": ["Graphic Design", "Adobe Illustrator", "Branding"]
+    },
+    {
+      "id": 6,
+      "title": "Digital Marketing Specialist",
+      "description": "Looking for a digital marketer to manage SEO and PPC campaigns for an online store.",
+      "budget": "UGX 1,500,000",
+      "location": "Remote",
+      "postedTime": "6 days ago",
+      "tags": ["SEO", "PPC", "Digital Marketing"]
+    },
+    {
+      "id": 7,
+      "title": "DevOps Engineer",
+      "description": "Require a DevOps engineer to set up CI/CD pipelines and manage cloud infrastructure.",
+      "budget": "UGX 3,000,000",
+      "location": "Remote",
+      "postedTime": "1 day ago",
+      "tags": ["DevOps", "AWS", "CI/CD", "Docker"]
+    },
+    {
+      "id": 8,
+      "title": "Video Editor",
+      "description": "Hiring a video editor to create promotional videos for a tourism company.",
+      "budget": "UGX 1,000,000",
+      "location": "Gulu",
+      "postedTime": "2 weeks ago",
+      "tags": ["Video Editing", "Adobe Premiere", "Tourism"]
+    },
+    {
+      "id": 9,
+      "title": "Machine Learning Engineer",
+      "description": "Need a machine learning engineer to develop predictive models for financial forecasting.",
+      "budget": "UGX 3,500,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["Machine Learning", "Python", "TensorFlow"]
+    },
+    {
+      "id": 10,
+      "title": "Social Media Manager",
+      "description": "Looking for a social media manager to grow engagement on Instagram and Twitter.",
+      "budget": "UGX 1,200,000",
+      "location": "Kampala",
+      "postedTime": "5 days ago",
+      "tags": ["Social Media", "Marketing", "Content Creation"]
+    },
+    {
+      "id": 11,
+      "title": "Cybersecurity Analyst",
+      "description": "Seeking a cybersecurity expert to conduct vulnerability assessments for a tech firm.",
+      "budget": "UGX 2,800,000",
+      "location": "Remote",
+      "postedTime": "1 week ago",
+      "tags": ["Cybersecurity", "Penetration Testing", "Network Security"]
+    },
+    {
+      "id": 12,
+      "title": "Copywriter",
+      "description": "Need a copywriter to create compelling ad copy for a real estate agency.",
+      "budget": "UGX 900,000",
+      "location": "Remote",
+      "postedTime": "4 days ago",
+      "tags": ["Copywriting", "Advertising", "Real Estate"]
+    },
+    {
+      "id": 13,
+      "title": "Blockchain Developer",
+      "description": "Hiring a blockchain developer to build a decentralized application for supply chain.",
+      "budget": "UGX 4,000,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["Blockchain", "Solidity", "Supply Chain"]
+    },
+    {
+      "id": 14,
+      "title": "Accountant",
+      "description": "Looking for an accountant to manage financial records for a small business.",
+      "budget": "UGX 1,500,000",
+      "location": "Kampala",
+      "postedTime": "1 week ago",
+      "tags": ["Accounting", "QuickBooks", "Finance"]
+    },
+    {
+      "id": 15,
+      "title": "Project Manager",
+      "description": "Need a project manager to oversee a construction project with a tight deadline.",
+      "budget": "UGX 2,200,000",
+      "location": "Mbale",
+      "postedTime": "3 days ago",
+      "tags": ["Project Management", "Construction", "Agile"]
+    },
+    {
+      "id": 16,
+      "title": "Customer Support Specialist",
+      "description": "Hiring a customer support specialist for a telecom company to handle client inquiries.",
+      "budget": "UGX 1,000,000",
+      "location": "Remote",
+      "postedTime": "5 days ago",
+      "tags": ["Customer Support", "Telecom", "Communication"]
+    },
+    {
+      "id": 17,
+      "title": "Database Administrator",
+      "description": "Seeking a DBA to optimize and manage MySQL databases for a logistics company.",
+      "budget": "UGX 2,500,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["Database Administration", "MySQL", "Logistics"]
+    },
+    {
+      "id": 18,
+      "title": "Event Planner",
+      "description": "Need an event planner to organize a corporate conference for 200 attendees.",
+      "budget": "UGX 1,800,000",
+      "location": "Kampala",
+      "postedTime": "1 week ago",
+      "tags": ["Event Planning", "Corporate Events", "Logistics"]
+    },
+    {
+      "id": 19,
+      "title": "SEO Specialist",
+      "description": "Looking for an SEO specialist to improve website rankings for a local business.",
+      "budget": "UGX 1,300,000",
+      "location": "Remote",
+      "postedTime": "4 days ago",
+      "tags": ["SEO", "Google Analytics", "Local Business"]
+    },
+    {
+      "id": 20,
+      "title": "Mechanical Engineer",
+      "description": "Hiring a mechanical engineer to design parts for an automotive manufacturing plant.",
+      "budget": "UGX 2,700,000",
+      "location": "Jinja",
+      "postedTime": "6 days ago",
+      "tags": ["Mechanical Engineering", "CAD", "Automotive"]
+    },
+    {
+      "id": 21,
+      "title": "HR Consultant",
+      "description": "Need an HR consultant to develop a recruitment strategy for a tech startup.",
+      "budget": "UGX 1,600,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["HR", "Recruitment", "Tech Startup"]
+    },
+    {
+      "id": 22,
+      "title": "Interior Designer",
+      "description": "Looking for an interior designer to redesign a luxury hotel lobby.",
+      "budget": "UGX 2,000,000",
+      "location": "Kampala",
+      "postedTime": "1 week ago",
+      "tags": ["Interior Design", "Hospitality", "Creative"]
+    },
+    {
+      "id": 23,
+      "title": "Software Tester",
+      "description": "Hiring a software tester to perform QA for a banking application.",
+      "budget": "UGX 1,800,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["QA", "Software Testing", "Banking"]
+    },
+    {
+      "id": 24,
+      "title": "Logistics Coordinator",
+      "description": "Need a logistics coordinator to manage supply chain operations for a retail chain.",
+      "budget": "UGX 1,500,000",
+      "location": "Kampala",
+      "postedTime": "5 days ago",
+      "tags": ["Logistics", "Supply Chain", "Retail"]
+    },
+    {
+      "id": 25,
+      "title": "Mobile App Developer",
+      "description": "Seeking a developer to build a cross-platform mobile app for a food delivery service.",
+      "budget": "UGX 2,800,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["Mobile Development", "Flutter", "Food Delivery"]
+    },
+    {
+      "id": 26,
+      "title": "Electrical Engineer",
+      "description": "Hiring an electrical engineer to design circuits for a renewable energy project.",
+      "budget": "UGX 2,600,000",
+      "location": "Gulu",
+      "postedTime": "1 week ago",
+      "tags": ["Electrical Engineering", "Renewable Energy", "Circuits"]
+    },
+    {
+      "id": 27,
+      "title": "Business Analyst",
+      "description": "Need a business analyst to streamline processes for a manufacturing firm.",
+      "budget": "UGX 2,000,000",
+      "location": "Remote",
+      "postedTime": "4 days ago",
+      "tags": ["Business Analysis", "Manufacturing", "Process Improvement"]
+    },
+    {
+      "id": 28,
+      "title": "Photographer",
+      "description": "Looking for a photographer to capture images for a wedding event.",
+      "budget": "UGX 1,200,000",
+      "location": "Kampala",
+      "postedTime": "2 days ago",
+      "tags": ["Photography", "Wedding", "Event"]
+    },
+    {
+      "id": 29,
+      "title": "Cloud Architect",
+      "description": "Hiring a cloud architect to design scalable infrastructure for a SaaS product.",
+      "budget": "UGX 3,200,000",
+      "location": "Remote",
+      "postedTime": "5 days ago",
+      "tags": ["Cloud Computing", "AWS", "SaaS"]
+    },
+    {
+      "id": 30,
+      "title": "Translator",
+      "description": "Need a translator to convert legal documents from English to Swahili.",
+      "budget": "UGX 800,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["Translation", "Swahili", "Legal"]
+    },
+    {
+      "id": 31,
+      "title": "Civil Engineer",
+      "description": "Seeking a civil engineer to oversee road construction projects.",
+      "budget": "UGX 2,500,000",
+      "location": "Mbale",
+      "postedTime": "1 week ago",
+      "tags": ["Civil Engineering", "Construction", "Roads"]
+    },
+    {
+      "id": 32,
+      "title": "Virtual Assistant",
+      "description": "Hiring a virtual assistant to manage emails and schedules for a busy executive.",
+      "budget": "UGX 700,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["Virtual Assistant", "Admin", "Scheduling"]
+    },
+    {
+      "id": 33,
+      "title": "AI Research Scientist",
+      "description": "Looking for an AI researcher to develop algorithms for a healthcare startup.",
+      "budget": "UGX 3,800,000",
+      "location": "Remote",
+      "postedTime": "4 days ago",
+      "tags": ["AI", "Research", "Healthcare"]
+    },
+    {
+      "id": 34,
+      "title": "Animator",
+      "description": "Need an animator to create 2D animations for an educational platform.",
+      "budget": "UGX 1,500,000",
+      "location": "Remote",
+      "postedTime": "6 days ago",
+      "tags": ["Animation", "2D", "Education"]
+    },
+    {
+      "id": 35,
+      "title": "Financial Analyst",
+      "description": "Hiring a financial analyst to evaluate investment opportunities for a firm.",
+      "budget": "UGX 2,200,000",
+      "location": "Kampala",
+      "postedTime": "3 days ago",
+      "tags": ["Finance", "Investment", "Analysis"]
+    },
+    {
+      "id": 36,
+      "title": "Network Administrator",
+      "description": "Seeking a network admin to manage IT infrastructure for a corporate office.",
+      "budget": "UGX 2,000,000",
+      "location": "Jinja",
+      "postedTime": "1 week ago",
+      "tags": ["Network Administration", "IT", "Infrastructure"]
+    },
+    {
+      "id": 37,
+      "title": "E-commerce Specialist",
+      "description": "Need an e-commerce specialist to optimize an online store on Shopify.",
+      "budget": "UGX 1,600,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["E-commerce", "Shopify", "Sales"]
+    },
+    {
+      "id": 38,
+      "title": "Legal Consultant",
+      "description": "Hiring a legal consultant to draft contracts for a tech company.",
+      "budget": "UGX 1,800,000",
+      "location": "Remote",
+      "postedTime": "5 days ago",
+      "tags": ["Legal", "Contracts", "Tech"]
+    },
+    {
+      "id": 39,
+      "title": "Marketing Analyst",
+      "description": "Looking for a marketing analyst to track campaign performance for a retail brand.",
+      "budget": "UGX 1,500,000",
+      "location": "Kampala",
+      "postedTime": "3 days ago",
+      "tags": ["Marketing", "Analytics", "Retail"]
+    },
+    {
+      "id": 40,
+      "title": "Game Developer",
+      "description": "Need a game developer to create a mobile game using Unity.",
+      "budget": "UGX 2,800,000",
+      "location": "Remote",
+      "postedTime": "4 days ago",
+      "tags": ["Game Development", "Unity", "Mobile"]
+    },
+    {
+      "id": 41,
+      "title": "Environmental Consultant",
+      "description": "Seeking an environmental consultant to assess impact for a construction project.",
+      "budget": "UGX 2,000,000",
+      "location": "Gulu",
+      "postedTime": "1 week ago",
+      "tags": ["Environmental", "Consulting", "Construction"]
+    },
+    {
+      "id": 42,
+      "title": "Technical Writer",
+      "description": "Hiring a technical writer to create user manuals for a software product.",
+      "budget": "UGX 1,200,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["Technical Writing", "Software", "Documentation"]
+    },
+    {
+      "id": 43,
+      "title": "Sales Manager",
+      "description": "Looking for a sales manager to lead a team for a beverage company.",
+      "budget": "UGX 2,500,000",
+      "location": "Kampala",
+      "postedTime": "5 days ago",
+      "tags": ["Sales", "Management", "Beverage"]
+    },
+    {
+      "id": 44,
+      "title": "UI Developer",
+      "description": "Need a UI developer to create interactive interfaces for a web application.",
+      "budget": "UGX 2,300,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["UI Development", "React", "Web"]
+    },
+    {
+      "id": 45,
+      "title": "Supply Chain Analyst",
+      "description": "Hiring a supply chain analyst to optimize logistics for a manufacturing firm.",
+      "budget": "UGX 1,800,000",
+      "location": "Jinja",
+      "postedTime": "1 week ago",
+      "tags": ["Supply Chain", "Logistics", "Manufacturing"]
+    },
+    {
+      "id": 46,
+      "title": "Content Strategist",
+      "description": "Seeking a content strategist to plan a digital campaign for a fashion brand.",
+      "budget": "UGX 1,400,000",
+      "location": "Remote",
+      "postedTime": "2 days ago",
+      "tags": ["Content Strategy", "Fashion", "Digital Marketing"]
+    },
+    {
+      "id": 47,
+      "title": "Product Manager",
+      "description": "Need a product manager to oversee the development of a fintech app.",
+      "budget": "UGX 2,700,000",
+      "location": "Kampala",
+      "postedTime": "4 days ago",
+      "tags": ["Product Management", "Fintech", "Agile"]
+    },
+    {
+      "id": 48,
+      "title": "Audio Engineer",
+      "description": "Hiring an audio engineer to produce music for a local band.",
+      "budget": "UGX 1,200,000",
+      "location": "Kampala",
+      "postedTime": "6 days ago",
+      "tags": ["Audio Engineering", "Music", "Production"]
+    },
+    {
+      "id": 49,
+      "title": "Data Engineer",
+      "description": "Looking for a data engineer to build ETL pipelines for a healthcare platform.",
+      "budget": "UGX 3,000,000",
+      "location": "Remote",
+      "postedTime": "3 days ago",
+      "tags": ["Data Engineering", "ETL", "Healthcare"]
+    },
+    {
+      "id": 50,
+      "title": "Public Relations Specialist",
+      "description": "Need a PR specialist to manage media relations for a nonprofit organization.",
+      "budget": "UGX 1,500,000",
+      "location": "Remote",
+      "postedTime": "5 days ago",
+      "tags": ["Public Relations", "Media", "Nonprofit"]
+    }
+  ]
+}

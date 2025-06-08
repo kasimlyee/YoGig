@@ -5,10 +5,15 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  ListItemButton,
   Divider,
   Box,
   Typography,
   Avatar,
+  IconButton,
+  Tooltip,
+  useTheme,
+  alpha,
 } from "@mui/material";
 import {
   Dashboard as DashboardIcon,
@@ -22,15 +27,27 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "@mui/icons-material";
+import { SxProps, Theme } from "@mui/material";
 
 interface SidebarProps {
   isCollapsed: boolean;
   toggleCollapse: () => void;
+  user: {
+    name: string;
+    role: string;
+    avatar?: string;
+  };
+  sx?: SxProps<Theme>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleCollapse }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  isCollapsed,
+  toggleCollapse,
+  user,
+  sx = {},
+}) => {
   const router = useRouter();
-  const [open, setOpen] = useState(true);
+  const theme = useTheme();
 
   const menuItems = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/dashboard" },
@@ -46,15 +63,26 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleCollapse }) => {
   return (
     <Box
       sx={{
-        width: isCollapsed ? 80 : 250,
+        display: { xs: "none", md: "block" },
+        width: isCollapsed ? theme.spacing(9) : theme.spacing(30),
+        ...sx,
         height: "100vh",
-        bgcolor: "white",
+        bgcolor: "background.paper",
         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-        transition: "width 0.3s ease",
+        transition: theme.transitions.create("width", {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
         position: "fixed",
-        zIndex: 100,
+        left: 0,
+        top: 0,
+        zIndex: theme.zIndex.drawer,
+
+        flexDirection: "column",
+        borderRight: `1px solid ${theme.palette.divider}`,
       }}
     >
+      {/* Header */}
       <Box
         sx={{
           display: "flex",
@@ -62,62 +90,116 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleCollapse }) => {
           justifyContent: isCollapsed ? "center" : "space-between",
           p: 2,
           height: 64,
-          borderBottom: "1px solid #F3F4F6",
+          borderBottom: `1px solid ${theme.palette.divider}`,
         }}
       >
         {!isCollapsed && (
-          <Typography variant="h6" color="yogig.primary" fontWeight="bold">
+          <Typography
+            variant="h6"
+            color="primary.main"
+            fontWeight={600}
+            sx={{ fontFamily: '"Poppins", sans-serif' }}
+          >
             YoGig
           </Typography>
         )}
-        <Box
-          onClick={toggleCollapse}
-          sx={{
-            cursor: "pointer",
-            color: "yogig.dark",
-            "&:hover": { color: "yogig.primary" },
-          }}
-        >
-          {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
-        </Box>
-      </Box>
-
-      <Box sx={{ p: 2, display: isCollapsed ? "none" : "block" }}>
-        <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-          <Avatar sx={{ bgcolor: "yogig.primary", mr: 2 }}>JD</Avatar>
-          <Box>
-            <Typography variant="subtitle1" fontWeight="medium">
-              John Doe
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Freelancer
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-
-      <Divider />
-
-      <List>
-        {menuItems.map((item) => (
-          <ListItem
-            key={item.text}
-            onClick={() => router.push(item.path)}
+        <Tooltip title={isCollapsed ? "Expand" : "Collapse"} arrow>
+          <IconButton
+            onClick={toggleCollapse}
+            size="small"
             sx={{
-              "&:hover": { backgroundColor: "#F3F4F6" },
-              borderRadius: 1,
-              mx: 1,
-              my: 0.5,
-              backgroundColor:
-                router.pathname === item.path ? "#EEF2FF" : "transparent",
-              color:
-                router.pathname === item.path ? "yogig.primary" : "yogig.dark",
+              color: "text.secondary",
+              "&:hover": {
+                color: "primary.main",
+                backgroundColor: alpha(theme.palette.primary.main, 0.1),
+              },
             }}
           >
-            <ListItemIcon sx={{ color: "inherit" }}>{item.icon}</ListItemIcon>
-            {!isCollapsed && <ListItemText primary={item.text} />}
-          </ListItem>
-        ))}
+            {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
+          </IconButton>
+        </Tooltip>
+      </Box>
+
+      {/* User Profile */}
+      {!isCollapsed && (
+        <>
+          <Box sx={{ p: 2, display: "flex", alignItems: "center" }}>
+            <Avatar
+              sx={{
+                bgcolor: "primary.main",
+                color: "primary.contrastText",
+                width: 40,
+                height: 40,
+                mr: 2,
+                fontSize: "1rem",
+              }}
+              src={user.avatar}
+            >
+              {user.name.charAt(0)}
+            </Avatar>
+            <Box>
+              <Typography variant="subtitle1" fontWeight={500}>
+                {user.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {user.role}
+              </Typography>
+            </Box>
+          </Box>
+          <Divider />
+        </>
+      )}
+
+      {/* Menu Items */}
+      <List sx={{ flexGrow: 1, overflow: "auto", py: 0 }}>
+        {menuItems.map((item) => {
+          const isActive = router.pathname === item.path;
+          return (
+            <Tooltip
+              key={item.text}
+              title={isCollapsed ? item.text : ""}
+              placement="right"
+              arrow
+            >
+              <ListItem>
+                <ListItemButton
+                  onClick={() => router.push(item.path)}
+                  sx={{
+                    px: isCollapsed ? 2.5 : 3,
+                    py: 1.25,
+                    mx: 1,
+                    my: 0.5,
+                    borderRadius: 1,
+                    backgroundColor: isActive
+                      ? alpha(theme.palette.primary.main, 0.1)
+                      : "transparent",
+                    color: isActive ? "primary.main" : "text.secondary",
+                    "&:hover": {
+                      backgroundColor: isActive
+                        ? alpha(theme.palette.primary.main, 0.15)
+                        : alpha(theme.palette.action.hover, 0.05),
+                    },
+                    "& .MuiListItemIcon-root": {
+                      minWidth: isCollapsed ? "auto" : 36,
+                      color: "inherit",
+                    },
+                  }}
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  {!isCollapsed && (
+                    <ListItemText
+                      primary={item.text}
+                      primaryTypographyProps={{
+                        fontWeight: isActive ? 500 : 400,
+                        fontSize: "0.875rem",
+                      }}
+                    />
+                  )}
+                </ListItemButton>
+              </ListItem>
+            </Tooltip>
+          );
+        })}
       </List>
     </Box>
   );

@@ -8,6 +8,8 @@ import {
   Grid,
   IconButton,
   Stack,
+  List,
+  ListItem,
 } from "@mui/material";
 import { CustomButton } from "../UI/CustomButton";
 import {
@@ -134,8 +136,8 @@ export const Footer = () => {
       }}
     >
       <Container maxWidth="xl">
-        <div className="flex flex-wrap -mx-4">
-          <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6">
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6} lg={3}>
             <Typography
               variant="h4"
               component="div"
@@ -168,10 +170,10 @@ export const Footer = () => {
             >
               Join Our Community
             </CustomButton>
-          </div>
+          </Grid>
 
           {footerLinks.map((column, index) => (
-            <div className="w-full md:w-1/2 lg:w-1/4 px-4 mb-6">
+            <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
               <Typography
                 variant="h6"
                 component="h3"
@@ -183,9 +185,9 @@ export const Footer = () => {
               >
                 {column.title}
               </Typography>
-              <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
+              <List sx={{ p: 0 }}>
                 {column.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+                  <ListItem key={linkIndex} sx={{ p: 0, mb: 1.5 }}>
                     <Link
                       href={link.href}
                       variant="body1"
@@ -194,7 +196,6 @@ export const Footer = () => {
                         display: "flex",
                         alignItems: "center",
                         gap: 1,
-                        mb: 1.5,
                         "&:hover": {
                           color: theme.palette.secondary.main,
                           "& .MuiSvgIcon-root": {
@@ -213,12 +214,12 @@ export const Footer = () => {
                         {link.icon}
                       </Box>
                     </Link>
-                  </li>
+                  </ListItem>
                 ))}
-              </Box>
-            </div>
+              </List>
+            </Grid>
           ))}
-        </div>
+        </Grid>
 
         <Divider
           sx={{
@@ -228,68 +229,72 @@ export const Footer = () => {
           }}
         />
 
-        <Box
+        <Grid
+          container
+          spacing={2}
           sx={{
-            display: "flex",
             flexDirection: { xs: "column-reverse", sm: "row" },
             justifyContent: "space-between",
             alignItems: "center",
-            gap: 2,
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: "rgba(255, 255, 255, 0.7)",
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-            }}
-          >
-            © {new Date().getFullYear()} YoGig. All rights reserved.
-          </Typography>
-          <Stack direction="row" spacing={3}>
-            <Link
-              href="/terms"
+          <Grid item>
+            <Typography
               variant="body2"
               sx={{
                 color: "rgba(255, 255, 255, 0.7)",
-                "&:hover": {
-                  color: theme.palette.secondary.main,
-                  textDecoration: "none",
-                },
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
               }}
             >
-              Terms
-            </Link>
-            <Link
-              href="/privacy"
-              variant="body2"
-              sx={{
-                color: "rgba(255, 255, 255, 0.7)",
-                "&:hover": {
-                  color: theme.palette.secondary.main,
-                  textDecoration: "none",
-                },
-              }}
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/cookies"
-              variant="body2"
-              sx={{
-                color: "rgba(255, 255, 255, 0.7)",
-                "&:hover": {
-                  color: theme.palette.secondary.main,
-                  textDecoration: "none",
-                },
-              }}
-            >
-              Cookies
-            </Link>
-          </Stack>
-        </Box>
+              © {new Date().getFullYear()} YoGig. All rights reserved.
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Stack direction="row" spacing={3}>
+              <Link
+                href="/terms"
+                variant="body2"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.7)",
+                  "&:hover": {
+                    color: theme.palette.secondary.main,
+                    textDecoration: "none",
+                  },
+                }}
+              >
+                Terms
+              </Link>
+              <Link
+                href="/privacy"
+                variant="body2"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.7)",
+                  "&:hover": {
+                    color: theme.palette.secondary.main,
+                    textDecoration: "none",
+                  },
+                }}
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/cookies"
+                variant="body2"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.7)",
+                  "&:hover": {
+                    color: theme.palette.secondary.main,
+                    textDecoration: "none",
+                  },
+                }}
+              >
+                Cookies
+              </Link>
+            </Stack>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

@@ -98,17 +98,23 @@ export const FeaturesSection = () => {
         </Typography>
       </Fade>
 
-      <div className="flex flex-wrap -mx-3 md:-mx-4">
+      <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
         {features.map((feature, index) => (
-          <div
+          <Grid
+            item
             key={index}
-            className="w-full sm:w-1/2 md:w-1/3 px-3 md:px-4 mb-6 flex justify-center"
+            xs={12}
+            sm={6}
+            md={4}
+            sx={{ display: "flex", justifyContent: "center" }}
           >
             <Grow in={loaded} timeout={(index + 1) * 200}>
               <Box
                 sx={{
                   p: { xs: 2.5, md: 3 },
                   height: "100%",
+                  width: "100%",
+                  maxWidth: 400,
                   borderRadius: 2,
                   boxShadow: 3,
                   backgroundColor: "background.paper",
@@ -152,9 +158,9 @@ export const FeaturesSection = () => {
                 </Typography>
               </Box>
             </Grow>
-          </div>
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </SectionContainer>
   );
 };
