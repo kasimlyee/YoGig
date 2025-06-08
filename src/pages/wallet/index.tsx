@@ -6,6 +6,7 @@ import {
   Typography,
   useTheme,
   Paper,
+  alpha,
   Tabs,
   Tab,
   Table,
@@ -15,6 +16,9 @@ import {
   TableHead,
   TableRow,
   Button,
+  Grid,
+  Chip,
+  Divider,
 } from "@mui/material";
 import {
   AttachMoney as MoneyIcon,
@@ -118,7 +122,12 @@ const Wallet: React.FC = () => {
           />
           <Container maxWidth="xl" sx={{ mt: 8, mb: 10 }}>
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h4" fontWeight="bold" gutterBottom>
+              <Typography
+                variant="h4"
+                fontWeight={600}
+                gutterBottom
+                sx={{ fontFamily: '"Poppins", sans-serif' }}
+              >
                 Wallet
               </Typography>
               <Typography variant="body1" color="text.secondary">
@@ -132,6 +141,8 @@ const Wallet: React.FC = () => {
               sx={{ mb: 3 }}
               variant="scrollable"
               scrollButtons="auto"
+              textColor="primary"
+              indicatorColor="primary"
             >
               <Tab label="Overview" />
               <Tab label="Withdraw" />
@@ -139,10 +150,17 @@ const Wallet: React.FC = () => {
             </Tabs>
 
             {tabValue === 0 && (
-              <div className="grid grid-cols-12 gap-6">
-                <div className="col-span-12 md:col-span-8">
-                  <Paper sx={{ p: 3, borderRadius: 2, mb: 3 }}>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={8}>
+                  <Paper
+                    sx={{
+                      p: 3,
+                      borderRadius: 2,
+                      mb: 3,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    <Typography variant="h6" fontWeight={600} gutterBottom>
                       Current Balance
                     </Typography>
                     <Typography variant="h3" sx={{ mb: 2 }}>
@@ -152,16 +170,24 @@ const Wallet: React.FC = () => {
                       variant="contained"
                       startIcon={<MoneyIcon />}
                       sx={{
-                        bgcolor: "yogig.primary",
-                        "&:hover": { bgcolor: "yogig.primary" },
+                        bgcolor: "primary.main",
+                        "&:hover": {
+                          bgcolor: "primary.dark",
+                        },
                       }}
                     >
                       Withdraw Funds
                     </Button>
                   </Paper>
 
-                  <Paper sx={{ p: 3, borderRadius: 2 }}>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  <Paper
+                    sx={{
+                      p: 3,
+                      borderRadius: 2,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    <Typography variant="h6" fontWeight={600} gutterBottom>
                       Earnings Overview
                     </Typography>
                     {/* Chart would go here */}
@@ -171,7 +197,7 @@ const Wallet: React.FC = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        bgcolor: "#F3F4F6",
+                        bgcolor: "action.hover",
                         borderRadius: 2,
                       }}
                     >
@@ -180,10 +206,17 @@ const Wallet: React.FC = () => {
                       </Typography>
                     </Box>
                   </Paper>
-                </div>
-                <div className="col-span-12 md:col-span-4">
-                  <Paper sx={{ p: 3, borderRadius: 2, mb: 3 }}>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                  <Paper
+                    sx={{
+                      p: 3,
+                      borderRadius: 2,
+                      mb: 3,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    <Typography variant="h6" fontWeight={600} gutterBottom>
                       Payout Method
                     </Typography>
                     <MobileMoneyCard
@@ -191,6 +224,7 @@ const Wallet: React.FC = () => {
                       number="0784 071 324"
                       isDefault
                     />
+                    <Divider sx={{ my: 2 }} />
                     <MobileMoneyCard
                       provider="Airtel"
                       number="0701 521 269"
@@ -202,17 +236,29 @@ const Wallet: React.FC = () => {
                       fullWidth
                       sx={{
                         mt: 2,
-                        color: "yogig.primary",
-                        borderColor: "yogig.primary",
-                        "&:hover": { borderColor: "yogig.primary" },
+                        color: "primary.main",
+                        borderColor: "primary.main",
+                        "&:hover": {
+                          borderColor: "primary.dark",
+                          backgroundColor: alpha(
+                            theme.palette.primary.main,
+                            0.05
+                          ),
+                        },
                       }}
                     >
                       Add Payout Method
                     </Button>
                   </Paper>
 
-                  <Paper sx={{ p: 3, borderRadius: 2 }}>
-                    <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  <Paper
+                    sx={{
+                      p: 3,
+                      borderRadius: 2,
+                      bgcolor: "background.paper",
+                    }}
+                  >
+                    <Typography variant="h6" fontWeight={600} gutterBottom>
                       Quick Stats
                     </Typography>
                     <Box sx={{ mb: 2 }}>
@@ -234,12 +280,18 @@ const Wallet: React.FC = () => {
                       <Typography variant="h6">UGX 8,750,000</Typography>
                     </Box>
                   </Paper>
-                </div>
-              </div>
+                </Grid>
+              </Grid>
             )}
 
             {tabValue === 2 && (
-              <Paper sx={{ p: 3, borderRadius: 2 }}>
+              <Paper
+                sx={{
+                  p: 3,
+                  borderRadius: 2,
+                  bgcolor: "background.paper",
+                }}
+              >
                 <Box
                   sx={{
                     display: "flex",
@@ -248,16 +300,22 @@ const Wallet: React.FC = () => {
                     mb: 3,
                   }}
                 >
-                  <Typography variant="h6" fontWeight="bold">
+                  <Typography variant="h6" fontWeight={600}>
                     Transaction History
                   </Typography>
                   <Button
                     variant="outlined"
                     startIcon={<HistoryIcon />}
                     sx={{
-                      color: "yogig.primary",
-                      borderColor: "yogig.primary",
-                      "&:hover": { borderColor: "yogig.primary" },
+                      color: "primary.main",
+                      borderColor: "primary.main",
+                      "&:hover": {
+                        borderColor: "primary.dark",
+                        backgroundColor: alpha(
+                          theme.palette.primary.main,
+                          0.05
+                        ),
+                      },
                     }}
                   >
                     Export History
@@ -275,32 +333,33 @@ const Wallet: React.FC = () => {
                     </TableHead>
                     <TableBody>
                       {transactions.map((transaction) => (
-                        <TableRow key={transaction.id}>
+                        <TableRow
+                          key={transaction.id}
+                          hover
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
                           <TableCell>{transaction.date}</TableCell>
                           <TableCell>{transaction.description}</TableCell>
                           <TableCell align="right">
                             {transaction.amount}
                           </TableCell>
                           <TableCell>
-                            <Box
+                            <Chip
+                              label={transaction.status}
+                              size="small"
                               sx={{
-                                display: "inline-block",
                                 bgcolor:
                                   transaction.status === "Completed"
-                                    ? "#D1FAE5"
-                                    : "#FEE2E2",
+                                    ? "success.light"
+                                    : "error.light",
                                 color:
                                   transaction.status === "Completed"
-                                    ? "#065F46"
-                                    : "#B91C1C",
-                                px: 1.5,
-                                py: 0.5,
-                                borderRadius: 1,
-                                fontSize: "0.75rem",
+                                    ? "success.dark"
+                                    : "error.dark",
                               }}
-                            >
-                              {transaction.status}
-                            </Box>
+                            />
                           </TableCell>
                         </TableRow>
                       ))}

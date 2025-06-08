@@ -16,6 +16,10 @@ import {
   IconButton,
   Fade,
   Slide,
+  useTheme,
+  Paper,
+  LinearProgress,
+  Link,
 } from "@mui/material";
 import {
   Visibility,
@@ -25,7 +29,6 @@ import {
   Email,
   Lock,
 } from "@mui/icons-material";
-import Link from "next/link";
 import { AuthFormData, AuthFormErrors, AuthFormType } from "@/types/auth";
 
 interface AuthFormProps {
@@ -37,6 +40,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
   initialFormType = "login",
   clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "",
 }) => {
+  const theme = useTheme();
   const [formType, setFormType] = useState<AuthFormType>(initialFormType);
   const [formData, setFormData] = useState<AuthFormData>({
     email: "",
@@ -141,15 +145,15 @@ const AuthForm: React.FC<AuthFormProps> = ({
   const getPasswordStrengthColor = (): string => {
     switch (passwordStrength) {
       case 1:
-        return "bg-red-500";
+        return theme.palette.error.main;
       case 2:
-        return "bg-amber-500";
+        return theme.palette.warning.main;
       case 3:
-        return "bg-blue-500";
+        return theme.palette.info.main;
       case 4:
-        return "bg-green-500";
+        return theme.palette.success.main;
       default:
-        return "bg-gray-200";
+        return theme.palette.divider;
     }
   };
 
@@ -170,17 +174,44 @@ const AuthForm: React.FC<AuthFormProps> = ({
 
   return (
     <Fade in={animate} timeout={500}>
-      <Box className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-white py-8 px-4 sm:px-6 lg:px-8">
+      <Box
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: `linear-gradient(to bottom right, ${theme.palette.primary.light}, ${theme.palette.background.default})`,
+          py: 8,
+          px: 2,
+        }}
+      >
         <Slide in={animate} direction="up" timeout={300}>
-          <Box className="w-full max-w-md">
-            <Box className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-              <Box className="text-center mb-8">
-                <Box className="flex justify-center mb-4">
-                  <Box className="bg-indigo-600 p-3 rounded-xl shadow-lg">
+          <Box sx={{ width: "100%", maxWidth: 450 }}>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 4,
+                borderRadius: 3,
+                bgcolor: "background.paper",
+              }}
+            >
+              <Box sx={{ textAlign: "center", mb: 4 }}>
+                <Box sx={{ display: "flex", justifyContent: "center", mb: 3 }}>
+                  <Box
+                    sx={{
+                      bgcolor: "primary.main",
+                      p: 2,
+                      borderRadius: 2,
+                      boxShadow: 3,
+                    }}
+                  >
                     <Typography
                       variant="h4"
-                      className="font-bold text-white"
-                      style={{ fontFamily: "Poppins, sans-serif" }}
+                      sx={{
+                        fontWeight: 700,
+                        color: "primary.contrastText",
+                        fontFamily: '"Poppins", sans-serif',
+                      }}
                     >
                       YoGig
                     </Typography>
@@ -188,12 +219,18 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 </Box>
                 <Typography
                   variant="h5"
-                  className="text-gray-800 font-medium"
-                  style={{ fontFamily: "Poppins, sans-serif" }}
+                  sx={{
+                    fontWeight: 500,
+                    color: "text.primary",
+                    fontFamily: '"Poppins", sans-serif',
+                  }}
                 >
                   {formType === "login" ? "Welcome back!" : "Join us today"}
                 </Typography>
-                <Typography variant="body2" className="text-gray-500 mt-2">
+                <Typography
+                  variant="body2"
+                  sx={{ color: "text.secondary", mt: 1 }}
+                >
                   {formType === "login"
                     ? "Sign in to access your account"
                     : "Create an account to get started"}
@@ -201,7 +238,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
               </Box>
 
               <GoogleOAuthProvider clientId={clientId}>
-                <Box className="mb-6">
+                <Box sx={{ mb: 3 }}>
                   <GoogleLogin
                     onSuccess={handleGoogleSuccess}
                     onError={handleGoogleError}
@@ -216,22 +253,28 @@ const AuthForm: React.FC<AuthFormProps> = ({
               </GoogleOAuthProvider>
 
               <Divider
-                className="my-6"
                 sx={{
-                  "&::before, &::after": { borderColor: "rgba(0, 0, 0, 0.12)" },
+                  my: 3,
+                  "&::before, &::after": {
+                    borderColor: "divider",
+                  },
                 }}
               >
                 <Typography
                   variant="body2"
-                  className="text-gray-400 px-2 bg-white"
+                  sx={{
+                    px: 2,
+                    bgcolor: "background.paper",
+                    color: "text.secondary",
+                  }}
                 >
                   or continue with email
                 </Typography>
               </Divider>
-              <div></div>
+
               <Box
                 component="form"
-                className="space-y-5"
+                sx={{ mt: 3 }}
                 onSubmit={handleSubmit}
                 noValidate
               >
@@ -249,26 +292,16 @@ const AuthForm: React.FC<AuthFormProps> = ({
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <Person className="text-gray-400" />
+                          <Person color="action" />
                         </InputAdornment>
                       ),
                     }}
                     variant="outlined"
                     size="medium"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: "12px",
-                        "& fieldset": {
-                          borderColor: "#e5e7eb",
-                        },
-                        "&:hover fieldset": {
-                          borderColor: "#818cf8",
-                        },
-                      },
-                    }}
+                    sx={{ mb: 2 }}
                   />
                 )}
-                <div></div>
+
                 <TextField
                   fullWidth
                   id="email"
@@ -282,25 +315,15 @@ const AuthForm: React.FC<AuthFormProps> = ({
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <Email className="text-gray-400" />
+                        <Email color="action" />
                       </InputAdornment>
                     ),
                   }}
                   variant="outlined"
                   size="medium"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      borderRadius: "12px",
-                      "& fieldset": {
-                        borderColor: "#e5e7eb",
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#818cf8",
-                      },
-                    },
-                  }}
+                  sx={{ mb: 2 }}
                 />
-                <div></div>
+
                 <TextField
                   fullWidth
                   id="password"
@@ -314,7 +337,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <Lock className="text-gray-400" />
+                        <Lock color="action" />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -324,7 +347,6 @@ const AuthForm: React.FC<AuthFormProps> = ({
                           onClick={() => setShowPassword(!showPassword)}
                           edge="end"
                           size="small"
-                          sx={{ color: "rgba(0, 0, 0, 0.54)" }}
                         >
                           {showPassword ? <VisibilityOff /> : <Visibility />}
                         </IconButton>
@@ -333,42 +355,62 @@ const AuthForm: React.FC<AuthFormProps> = ({
                   }}
                   variant="outlined"
                   size="medium"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      borderRadius: "12px",
-                      "& fieldset": {
-                        borderColor: "#e5e7eb",
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#818cf8",
-                      },
-                    },
-                  }}
+                  sx={{ mb: 1 }}
                 />
-                <div></div>
+
                 {formType === "signup" && formData.password && (
-                  <Box className="space-y-2">
-                    <Box className="flex items-center justify-between">
-                      <Typography variant="caption" className="text-gray-600">
+                  <Box sx={{ mb: 2 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        mb: 0.5,
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{ color: "text.secondary" }}
+                      >
                         Password strength:{" "}
-                        <span className="font-medium">
+                        <Typography
+                          component="span"
+                          variant="caption"
+                          sx={{ fontWeight: 500 }}
+                        >
                           {getPasswordStrengthLabel()}
-                        </span>
+                        </Typography>
                       </Typography>
-                      <Typography variant="caption" className="text-gray-400">
+                      <Typography
+                        variant="caption"
+                        sx={{ color: "text.secondary" }}
+                      >
                         {formData.password.length}/8
                       </Typography>
                     </Box>
-                    <Box className="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
-                      <Box
-                        className={`h-full rounded-full ${getPasswordStrengthColor()} transition-all duration-300`}
-                        style={{ width: `${(passwordStrength / 4) * 100}%` }}
-                      />
-                    </Box>
+                    <LinearProgress
+                      variant="determinate"
+                      value={(passwordStrength / 4) * 100}
+                      sx={{
+                        height: 4,
+                        borderRadius: 2,
+                        backgroundColor: theme.palette.divider,
+                        "& .MuiLinearProgress-bar": {
+                          backgroundColor: getPasswordStrengthColor(),
+                        },
+                      }}
+                    />
                   </Box>
                 )}
+
                 {formType === "login" && (
-                  <Box className="flex items-center justify-between">
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      mb: 2,
+                    }}
+                  >
                     <FormControlLabel
                       control={
                         <Checkbox
@@ -380,38 +422,45 @@ const AuthForm: React.FC<AuthFormProps> = ({
                         />
                       }
                       label={
-                        <Typography variant="body2" className="text-gray-600">
+                        <Typography
+                          variant="body2"
+                          sx={{ color: "text.secondary" }}
+                        >
                           Remember me
                         </Typography>
                       }
                     />
                     <Link
                       href="/forgot-password"
-                      className="text-sm text-indigo-600 hover:text-indigo-500 font-medium transition-colors"
+                      sx={{
+                        typography: "body2",
+                        color: "primary.main",
+                        fontWeight: 500,
+                        "&:hover": {
+                          color: "primary.dark",
+                        },
+                      }}
                     >
                       Forgot password?
                     </Link>
                   </Box>
                 )}
+
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   size="large"
-                  className={`py-3 rounded-xl text-white font-medium ${
-                    loading ? "opacity-90" : ""
-                  }`}
                   disabled={loading}
                   endIcon={!loading && <ArrowForward />}
                   sx={{
-                    background: "linear-gradient(to right, #6366f1, #8b5cf6)",
-                    boxShadow: "0 4px 6px rgba(99, 102, 241, 0.3)",
+                    py: 1.5,
+                    borderRadius: 2,
+                    fontWeight: 500,
+                    mt: 1,
+                    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                     "&:hover": {
-                      background: "linear-gradient(to right, #4f46e5, #7c3aed)",
-                      boxShadow: "0 6px 8px rgba(79, 70, 229, 0.4)",
-                    },
-                    "&:disabled": {
-                      background: "#e5e7eb",
+                      background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`,
                     },
                   }}
                 >
@@ -425,36 +474,56 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 </Button>
               </Box>
 
-              <Box className="text-center mt-6">
-                <Typography variant="body2" className="text-gray-600">
+              <Box sx={{ textAlign: "center", mt: 3 }}>
+                <Typography variant="body2" sx={{ color: "text.secondary" }}>
                   {formType === "login"
                     ? "Don't have an account?"
                     : "Already have an account?"}{" "}
                   <Button
                     onClick={toggleFormType}
-                    className="text-indigo-600 hover:text-indigo-500 font-medium"
-                    size="small"
-                    sx={{ textTransform: "none" }}
+                    sx={{
+                      color: "primary.main",
+                      fontWeight: 500,
+                      textTransform: "none",
+                      p: 0,
+                      minWidth: "auto",
+                      "&:hover": {
+                        color: "primary.dark",
+                        backgroundColor: "transparent",
+                      },
+                    }}
                   >
                     {formType === "login" ? "Sign up" : "Sign in"}
                   </Button>
                 </Typography>
               </Box>
-            </Box>
+            </Paper>
 
-            <Box className="text-center mt-6">
-              <Typography variant="body2" className="text-gray-500">
+            <Box sx={{ textAlign: "center", mt: 3 }}>
+              <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 By continuing, you agree to our{" "}
                 <Link
                   href="/terms"
-                  className="text-indigo-600 hover:text-indigo-500 font-medium"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 500,
+                    "&:hover": {
+                      color: "primary.dark",
+                    },
+                  }}
                 >
                   Terms
                 </Link>{" "}
                 and{" "}
                 <Link
                   href="/privacy"
-                  className="text-indigo-600 hover:text-indigo-500 font-medium"
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 500,
+                    "&:hover": {
+                      color: "primary.dark",
+                    },
+                  }}
                 >
                   Privacy Policy
                 </Link>

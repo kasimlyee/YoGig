@@ -243,17 +243,18 @@ const Dashboard: React.FC = () => {
                         borderRadius: 2,
                         bgcolor: "background.paper",
                         height: "100%",
+                        width: "100",
                       }}
                     >
                       <Box>
                         <Typography variant="body2" color="text.secondary">
                           {formatDate(currentTime)}
                         </Typography>
-                        <Typography variant="h5" fontWeight={600}>
+                        <Typography variant="h6" fontWeight={600}>
                           {formatTime(currentTime)}
                         </Typography>
                       </Box>
-                      <ClockIcon color="primary" sx={{ fontSize: 32 }} />
+                      <ClockIcon color="primary" sx={{ fontSize: 30 }} />
                     </Paper>
                   </Grid>
                   <Grid item xs={6}>

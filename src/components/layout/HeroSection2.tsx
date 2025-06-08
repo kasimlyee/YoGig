@@ -121,8 +121,18 @@ export const HeroSection = () => {
                 lineHeight: 1.6,
               }}
             >
-              Uganda and East Africa's premier freelance marketplace connecting
-              local talent with businesses, NGOs, and individuals.
+              YoGig is a next-generation freelance and work platform
+              purpose-built for Uganda and East Africa, inspired by global
+              giants like Upwork but carefully tailored to reflect the economic,
+              cultural, and technological realities of our region. At its core,
+              YoGig is a digital bridge—connecting skilled freelancers,
+              creatives, and specialists with businesses, NGOs, startups, and
+              individuals looking for professional, affordable, and verified
+              services. Whether it’s graphic design, software development,
+              writing, translation, admin support, or local on-site jobs like
+              installation or repairs, YoGig empowers both remote and physical
+              collaboration through a platform that’s fast, fair, and
+              financially inclusive.
             </Typography>
           </Slide>
 
@@ -178,46 +188,6 @@ export const HeroSection = () => {
               </Link>
             </Stack>
           </Grow>
-
-          <Fade in={loaded} timeout={1200}>
-            <Box
-              sx={{
-                maxWidth: "1200px",
-                mx: "auto",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: `0 20px 40px ${
-                  theme.palette.mode === "dark" ? "#00000060" : "#00000020"
-                }`,
-                border: `1px solid ${theme.palette.divider}`,
-                transition: "transform 0.5s ease",
-                "&:hover": {
-                  transform: "translateY(-5px)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  position: "relative",
-                  height: { xs: "200px", sm: "300px", md: "400px" },
-                  width: "100%",
-                }}
-              >
-                <Image
-                  src={hero}
-                  alt="YoGig Dashboard Preview"
-                  fill
-                  priority
-                  quality={90}
-                  style={{
-                    objectFit: "cover",
-                    objectPosition: "top center",
-                  }}
-                  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                />
-              </Box>
-            </Box>
-          </Fade>
         </Box>
       </Container>
     </Box>

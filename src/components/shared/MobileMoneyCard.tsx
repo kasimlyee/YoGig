@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Typography, Avatar, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Avatar,
+  useTheme,
+  IconButton,
+  alpha,
+} from "@mui/material";
 import { Edit as EditIcon } from "@mui/icons-material";
 
 interface MobileMoneyCardProps {
@@ -13,6 +20,7 @@ const MobileMoneyCard: React.FC<MobileMoneyCardProps> = ({
   number,
   isDefault,
 }) => {
+  const theme = useTheme();
   const getProviderColor = () => {
     switch (provider.toLowerCase()) {
       case "mtn":
@@ -60,8 +68,8 @@ const MobileMoneyCard: React.FC<MobileMoneyCardProps> = ({
               variant="caption"
               sx={{
                 display: "inline-block",
-                bgcolor: "#E0E7FF",
-                color: "yogig.primary",
+                bgcolor: alpha(theme.palette.primary.main, 0.1),
+                color: "primary.main",
                 px: 1,
                 py: 0.5,
                 borderRadius: 1,
